@@ -1,27 +1,40 @@
-# RecipesProject
+# Recipe Sharing Website - Client (Frontend)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.7.
+This repository contains the frontend for the Recipe Sharing Website, built with Angular. The frontend connects to the backend API to manage users, recipes, and categories, providing a responsive and user-friendly interface.
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Users can create, update, and delete recipes.
+- Recipes are categorized for easier browsing.
+- Users can search for recipes by name or category.
+- Responsive design for both mobile and desktop.
+- User authentication and authorization via JWT.
+- Recipe sharing options: public or private.
 
-## Code scaffolding
+## Technologies Used
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Angular**: JavaScript framework for building client-side applications.
+- **Angular Material**: UI component library for a modern, responsive layout.
+- **RxJS**: Library for handling reactive programming with observables.
+- **Reactive Forms**: Used for handling dynamic forms and implementing form validation.
+- **HTTP Client**: For making API calls to the backend.
+- **JWT (JSON Web Token)**: Used for user authentication and session management.
 
-## Build
+## Installation
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Prerequisites
 
-## Running unit tests
+- Node.js (v14+)
+- npm (Node Package Manager)
+- Angular CLI (v12+)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Steps
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/Tami-Co/Client-side-recipe-project/.git
+2. **Navigate to the client folder and install dependencies**:
+   cd client-side
+   npm install
+3. **Run the frontend (client)**:
+    ng serve

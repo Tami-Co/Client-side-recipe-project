@@ -34,7 +34,9 @@ This repository contains the frontend for the Recipe Sharing Website, built with
    ```bash
    git clone https://github.com/Tami-Co/Client-side-recipe-project/.git
 2. **Navigate to the client folder and install dependencies**:
+     ```bash
    cd client-side
    npm install
-3. **Run the frontend (client)**:
+4. **Run the frontend (client)**:
+      ```bash
     ng serve

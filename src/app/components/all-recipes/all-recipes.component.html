@@ -1,0 +1,47 @@
+<div class="filters">
+    <div class="categoryFilter">
+        <mat-form-field>
+            <mat-label>סינון לפי קטגוריה</mat-label>
+            <mat-select [(ngModel)]="selectedCategory" (selectionChange)="filterByCategory($event.value)">
+                @for (c of listCategories; track c) {
+                <mat-option [value]="c.description">{{c.description}}</mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="levelFilter">
+        <mat-form-field>
+            <mat-label>סינון לפי רמת קושי</mat-label>
+            <mat-select [(ngModel)]="selectedLevel" (selectionChange)="filterByLevel($event.value)">
+                <mat-option *ngFor="let l of [1, 2, 3, 4, 5]" [value]="l">{{l}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="timeFilter">
+        <mat-form-field>
+            <mat-label>סינון לפי זמן הכנה</mat-label>
+            <mat-select [(ngModel)]="selectedTime" (selectionChange)="filterByTime($event.value)">
+                <mat-option [value]="15">דקות 15</mat-option>
+                <mat-option [value]="30">30 דקות</mat-option>
+                <mat-option [value]="60">1 שעה</mat-option>
+                <mat-option [value]="90">1.5 שעות</mat-option>
+                <mat-option [value]="120">2 שעות</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="cancleFilter">
+        <button (click)="cancleFilter()" mat-flat-button color="primary">בטל סינונים</button>
+
+    </div>
+</div>
+<div>
+    <h3 *ngIf="flag">אין לנו עוד מה להציג</h3>
+</div>
+<div>
+    <h4 *ngIf="listRecipes.length==0 && without_filters==false">אין מתכונים התואמים לחיפוש שלך</h4>
+</div>
+<app-show-recipes [fromComp]="'allRecipes'" [recipes]="listRecipes"></app-show-recipes>
+
+<mat-paginator *ngIf="without_filters" (page)="onPageChange($event)" class="custom-paginator" [length]="lengthRecipes"
+    [pageSize]="12" aria-label="Select page">
+</mat-paginator>

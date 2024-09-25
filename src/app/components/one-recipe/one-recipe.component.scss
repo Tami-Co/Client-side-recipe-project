@@ -1,0 +1,118 @@
+.recipe-card {
+  width: 22vw;
+  height: 46vh;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  mat-card-header {
+    padding: 0px 0px 0px 0px;
+    background-color: white;
+  }
+
+  mat-card-title {
+    font-size: 1.5em;
+    font-family: 'Assistant';
+    padding-right: 6%;
+
+  }
+
+  img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+  }
+
+  p {
+    margin: 0.5px 0px 0px 0px;
+  }
+
+  mat-card-content {
+    padding-top: 2%;
+    font-size: 1em;
+  }
+
+}
+
+::ng-deep .mat-mdc-button:not(:disabled) {
+  color: #fe5cc0 !important;
+  font-family: 'Assistant' !important;
+}
+
+::ng-deep .mat-mdc-button .mat-mdc-button-ripple,
+.mat-mdc-button .mat-mdc-button-persistent-ripple,
+.mat-mdc-button .mat-mdc-button-persistent-ripple::before,
+.mat-mdc-unelevated-button .mat-mdc-button-ripple,
+.mat-mdc-unelevated-button .mat-mdc-button-persistent-ripple,
+.mat-mdc-unelevated-button .mat-mdc-button-persistent-ripple::before,
+.mat-mdc-raised-button .mat-mdc-button-ripple,
+.mat-mdc-raised-button .mat-mdc-button-persistent-ripple,
+.mat-mdc-raised-button .mat-mdc-button-persistent-ripple::before,
+.mat-mdc-outlined-button .mat-mdc-button-ripple,
+.mat-mdc-outlined-button .mat-mdc-button-persistent-ripple,
+.mat-mdc-outlined-button .mat-mdc-button-persistent-ripple::before {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  pointer-events: none;
+  border-radius: inherit;
+  background-color: transparent !important;
+}
+
+@media (max-width: 1024px) {
+  .recipe-card {
+    width: 45vw;
+    height: auto;
+  }
+
+  .filters {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .recipe-details .recipe-body {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+
+  .recipe-details .recipe-image {
+    width: 80%;
+    height: auto;
+    max-height: 300px;
+  }
+
+  .info_recipe {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .info2,
+  .level {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .custom-paginator {
+    justify-content: center !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .recipe-card {
+    width: 90vw;
+    height: auto;
+  }
+
+  .recipe-details .recipe-image {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+  }
+}

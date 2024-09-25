@@ -1,0 +1,177 @@
+<div class="myForm">
+    <form [formGroup]="recipeForm" (ngSubmit)=" updateRec.name==undefined ? addRecipe() : updateRecipe()">
+        <h2 class="title" *ngIf="isFinished"> {{ updateRec.name ==undefined ? 'שיתוף מתכון' : 'עדכון מתכון' }}</h2>
+        <div>
+            <mat-form-field>
+                <mat-label>שם מתכון</mat-label>
+                <input [(ngModel)]="recipeToUpdate.name" matInput type="text" formControlName="name">
+                <mat-error *ngIf="recipeForm.controls['name'].hasError('required')">שדה חובה</mat-error>
+                <mat-error *ngIf="recipeForm.controls['name'].hasError('minlength')">שם מכיל מינימום 2 תווים</mat-error>
+                <mat-error *ngIf="recipeForm.controls['name'].hasError('maxlength') ">שם מכיל מקסימום 50
+                    תווים</mat-error>
+                <mat-error *ngIf="recipeForm.controls['name'].hasError('pattern')">שם מכיל אותיות בלבד</mat-error>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label>תיאור </mat-label>
+                <textarea matInput type="text" formControlName="description"
+                    [(ngModel)]="recipeToUpdate.description"></textarea>
+                <mat-error *ngIf="recipeForm.controls['description'].hasError('required')">שדה חובה</mat-error>
+                <mat-error *ngIf="recipeForm.controls['description'].hasError('minlength')">תיאור מכיל מינימום 2
+                    תווים</mat-error>
+                <mat-error *ngIf="recipeForm.controls['description'].hasError('maxlength') ">תיאור מכיל מקסימום 200
+                    תווים</mat-error>
+                <mat-error *ngIf="recipeForm.controls['description'].hasError('pattern')">תיאור מכיל אותיות ומספרים
+                    בלבד</mat-error>
+            </mat-form-field>
+
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label>בחירת קטגוריה</mat-label>
+                <mat-select formControlName="category" multiple>
+                    @for (c of listCategories; track c) {
+                    <mat-option [value]="c.description">{{c.description}}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>הוספת קטגוריה חדשה</mat-label>
+                <input matInput type="text" formControlName="newCategory">
+                <mat-error *ngIf="recipeForm.controls['newCategory'].hasError('minlength')">קטגוריה מכילה מינימום 2
+                    תווים</mat-error>
+                <mat-error *ngIf="recipeForm.controls['newCategory'].hasError('maxlength') ">קטגוריה מכילה מקסימום 50
+                    תווים</mat-error>
+                <mat-error *ngIf="recipeForm.controls['newCategory'].hasError('pattern')">קטגוריה מכילה אותיות
+                    בלבד</mat-error>
+            </mat-form-field>
+            <mat-error
+                *ngIf="recipeForm.controls['category']==undefined && recipeForm.controls['newCategory']==undefined">חובה
+                לבחור או להוסיף קטגוריה</mat-error>
+
+        </div>
+
+
+        <div>
+            <mat-form-field floatLabel="always">
+                <mat-label>משך זמן הכנה</mat-label>
+                <input [(ngModel)]="recipeToUpdate.preparationTime" matInput formControlName="preparationTime"
+                    type="number" class="example-right-align" placeholder="0">
+                <mat-error *ngIf="recipeForm.controls['preparationTime'].hasError('required')">שדה חובה</mat-error>
+                <mat-error *ngIf="recipeForm.controls['preparationTime'].hasError('maxlength') ">זמן הכנה לא
+                    תקין</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field>
+                <mat-label>בחירת רמה</mat-label>
+                <mat-select formControlName="level">
+                    <mat-option [value]="1">1</mat-option>
+                    <mat-option [value]="2">2</mat-option>
+                    <mat-option [value]="3">3</mat-option>
+                    <mat-option [value]="4">4</mat-option>
+                    <mat-option [value]="5">5</mat-option>
+                </mat-select>
+
+                <mat-error *ngIf="recipeForm.controls['level'].hasError('required')">שדה חובה</mat-error>
+
+            </mat-form-field>
+        </div>
+
+
+
+        <div formArrayName="layersCake">
+            <p> שלבי הכנה:</p>
+
+            <ng-container *ngIf="update == false; else elseTemplate">
+                <div *ngFor="let layer of layersCake.controls; let layerIndex = index" [formGroupName]="layerIndex">
+                    <div>
+                        <mat-form-field>
+                            <mat-label>תיאור שכבה</mat-label>
+                            <input formControlName="description" type="text" matInput>
+                            <mat-error *ngIf="recipeForm.controls['description'].hasError('required')">שדה
+                                חובה</mat-error>
+                            <mat-error *ngIf="recipeForm.controls['description'].hasError('minlength')">שם מכיל מינימום
+                                2 תווים</mat-error>
+                            <mat-error *ngIf="recipeForm.controls['description'].hasError('maxlength') ">שם מכיל מקסימום
+                                50
+                                תווים</mat-error>
+                            <mat-error *ngIf="recipeForm.controls['description'].hasError('pattern')">שם מכיל אותיות
+                                בלבד</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div formArrayName="ingredients">
+                        <div
+                            *ngFor="let ingredient of getIngredients(layerIndex).controls; let ingredientIndex = index">
+                            <mat-form-field>
+                                <mat-label>הוסף מוצר</mat-label>
+                                <input matInput (blur)="addingredient(layerIndex)" [formControlName]="ingredientIndex">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+
+
+            <ng-template #elseTemplate>
+                <div *ngFor="let layer of recipeToUpdate?.layersCake; let layerIndex = index">
+                    <div>
+                        <mat-form-field>
+                            <mat-label>תיאור שכבה</mat-label>
+                            <input matInput value="{{ layer.description }}">
+                        </mat-form-field>
+                    </div>
+                    <div *ngIf="recipeToUpdate?.layersCake?.[layerIndex] !== undefined">
+                        <div
+                            *ngFor="let ingredient of recipeToUpdate?.layersCake?.[layerIndex]?.ingredients; let ingredientIndex = index">
+                            <mat-form-field>
+                                <mat-label>הוסף מוצר</mat-label>
+                                <input (blur)="addingredient(layerIndex)" matInput value="{{ ingredient }}">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+
+            <button type="button" (click)="addLayer()" mat-flat-button color="primary">שכבה נוספת </button>
+        </div>
+
+
+        <div>
+            <mat-form-field>
+                <mat-label>הוראות הכנה </mat-label>
+                <textarea [(ngModel)]="recipeToUpdate.instructions" matInput type="text"
+                    formControlName="instructions"></textarea>
+                <mat-error *ngIf="recipeForm.controls['instructions'].hasError('required')">שדה חובה</mat-error>
+                <mat-error *ngIf="recipeForm.controls['instructions'].hasError('minlength')"> מינימום 10
+                    תווים</mat-error>
+                <mat-error *ngIf="recipeForm.controls['instructions'].hasError('maxlength') "> מקסימום 10000
+                    תווים</mat-error>
+            </mat-form-field>
+
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label>הכנס קישור לתמונה</mat-label>
+                <input [(ngModel)]="recipeToUpdate.img" type="text" matInput formControlName="img">
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-checkbox [checked]="recipeToUpdate.isPrivate" [(ngModel)]="recipeToUpdate.isPrivate"
+                formControlName="isPrivate" class="example-margin">האם המתכון פרטי?</mat-checkbox>
+            <mat-error
+                *ngIf="recipeForm.controls['isPrivate'].hasError('required') && recipeForm.controls['isPrivate'].touched">שדה
+                חובה</mat-error>
+
+        </div>
+
+        <div class="example-button-row" *ngIf="isFinished">
+            <button [disabled]="updateRec.name==undefined ? recipeForm.invalid : false" mat-flat-button
+                color="primary">{{ updateRec.name==undefined ?
+                'הוספה' : 'עדכון'}}</button>
+        </div>
+
+    </form>
+</div>

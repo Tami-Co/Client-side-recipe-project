@@ -1,0 +1,69 @@
+/* סגנונות כלליים לקומפוננטות Angular Material */
+.mat-mdc-tab .mdc-tab__text-label {
+    font-family: "Assistant", sans-serif;
+    font-size: larger;
+}
+
+.mat-mdc-tab.mdc-tab--active .mdc-tab__text-label {
+    color: #332f32;
+}
+
+.mat-button {
+    color: white;
+}
+
+body {
+    font-family: 'Assistant', sans-serif;
+    direction: rtl;
+    background-image: url('./assets/1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    /* מקבע את התמונה */
+    min-height: 100vh;
+    /* מבטיח שהתמונה תכסה לפחות את כל הגובה הראשוני של הדף */
+    margin: 0;
+    padding: 0;
+}
+
+// .mat-mdc-button .mdc-button__label, .mat-mdc-unelevated-button .mdc-button__label, .mat-mdc-raised-button .mdc-button__label, .mat-mdc-outlined-button .mdc-button__label {
+//     z-index: 1;
+//     font-family: 'Assistant';
+// }
+
+::ng-deep .mat-mdc-button .mdc-button__label,
+.mat-mdc-unelevated-button .mdc-button__label,
+.mat-mdc-raised-button .mdc-button__label,
+.mat-mdc-outlined-button .mdc-button__label {
+    font-family: 'Assistant' !important;
+}
+
+
+/* סגנונות נוספים לקומפוננטות Angular Material */
+.mat-form-field,
+.mat-input-element,
+.mat-select-value-text,
+.mat-button,
+.mat-raised-button,
+.mat-stroked-button,
+.mat-icon-button,
+.mat-checkbox-label,
+.mat-radio-label,
+.mat-slider-thumb,
+.mat-slide-toggle-bar,
+.mat-menu-panel,
+.mat-tooltip,
+.mat-card-title,
+.mat-card-content,
+.mat-list-item,
+.mat-tab-label,
+.mat-toolbar,
+.mat-dialog-container,
+.mat-drawer-content,
+.mat-progress-bar,
+.mat-spinner-circle,
+.mat-autocomplete-panel,
+.mat-chip-list {
+    font-family: 'Assistant', sans-serif;
+}

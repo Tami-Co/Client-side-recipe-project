@@ -1,0 +1,73 @@
+
+.custom-paginator .mat-paginator-page-size {
+    display: none;
+}
+
+::ng-deep .mat-mdc-paginator-container {
+    direction: ltr !important;
+    align-items: center !important;
+    justify-content: right !important;
+
+}
+
+.timeFilter {
+    padding-top: 2%;
+}
+
+.levelFilter {
+    padding-top: 2%;
+
+}
+
+.categoryFilter {
+    padding-top: 2%;
+
+}
+
+.filters {
+    display: flex;
+    justify-content: space-around;
+    background-color: #e6e6e6c4;
+    // margin-bottom: 20px;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.cancleFilter {
+    padding-top: 2%;
+}
+
+h3 {
+    text-align: center;
+}
+
+h4 {
+    text-align: center;
+
+}
+
+
+::ng-deep div.mat-mdc-select-panel .mat-mdc-option {
+    font-family: 'Assistant' !important;
+}
+
+.mat-mdc-unelevated-button:not(:disabled) {
+    color:#faeafc !important;
+    background-color:#404040 !important;
+    font-family: 'Assistant' !important;
+
+}
+
+::ng-deep mat-label {
+    font-family: 'Assistant' !important;
+}
+
+::ng-deep span.mat-mdc-select-min-line.ng-tns-c1771602899-4.ng-star-inserted {
+    font-family: 'Assistant' !important;
+}
+
+::ng-deep span.mat-mdc-select-min-line.ng-tns-c1771602899-8.ng-star-inserted {
+    font-family: 'Assistant' !important;
+}

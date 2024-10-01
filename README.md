@@ -20,6 +20,10 @@ This repository contains the frontend for the Recipe Sharing Website, built with
 - **HTTP Client**: For making API calls to the backend.
 - **JWT (JSON Web Token)**: Used for user authentication and session management.
 
+## Backend
+
+The backend for this project is available [here](https://recipe-site-server.onrender.com/).  
+
 ## Installation
 
 ### Prerequisites
